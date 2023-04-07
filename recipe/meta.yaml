@@ -11,7 +11,7 @@ source:
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: "{{ PYTHON }} -m pip install --no-deps . -vv"
   noarch: python
 
 requirements:
@@ -19,6 +19,7 @@ requirements:
     - pip
     - python
     - six
+    - wheel
   run:
     - python
     - six
@@ -31,9 +32,11 @@ test:
     - tinyrpc.protocols
     - tinyrpc.server
     - tinyrpc.transports
+  commands:
+    - pip check
 
 about:
-  home: "http://github.com/mbr/tinyrpc"
+  home: "https://github.com/mbr/tinyrpc"
   license: MIT
   license_family: MIT
   license_file: 
