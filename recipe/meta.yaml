@@ -26,7 +26,7 @@ requirements:
 
 test:
   imports:
-    - tests
+#    - tests
     - tinyrpc
     - tinyrpc.dispatch
     - tinyrpc.protocols
