@@ -7,11 +7,11 @@ package:
 
 source:
   url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 630f67b8b5a924e386a185127e02be7de1993fd1016eb6533fd1103950c77606
+  sha256: 7fc67de35015bdddbd24ca71b16c147beb771091197d1b1e2cb4e9ab63ded661
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: "{{ PYTHON }} -m pip install --no-deps . -vv"
   noarch: python
 
 requirements:
@@ -19,21 +19,24 @@ requirements:
     - pip
     - python
     - six
+    - wheel
   run:
     - python
     - six
 
 test:
   imports:
-    - tests
+#    - tests
     - tinyrpc
     - tinyrpc.dispatch
     - tinyrpc.protocols
     - tinyrpc.server
     - tinyrpc.transports
+  commands:
+    - pip check
 
 about:
-  home: "http://github.com/mbr/tinyrpc"
+  home: "https://github.com/mbr/tinyrpc"
   license: MIT
   license_family: MIT
   license_file: 
@@ -42,5 +45,7 @@ about:
   dev_url: 
 
 extra:
+  anaconda-services:
+   ref: https://anaconda.zendesk.com/agent/tickets/34583
   recipe-maintainers:
     - anaobi
